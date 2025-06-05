@@ -4,33 +4,43 @@
  */
 package gesundheit2;
 
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.awt.*;
 
-/**
- *
- * @author heinicke.antje
- */
-public class GesundheitAnzeige extends JFrame implements ActionListener{
-    JPanel mainPanel=new JPanel(new GridLayout(2,5));
-    GesundheitButton button1=new GesundheitButton();
-    
-    public GesundheitAnzeige(String name){
-        this.setTitle(name);
-        this.mainPanel.add(this.button1);
-        this.add(this.mainPanel);        
-        this.button1.addActionListener(this);   
-        
-        this.setSize(400, 300);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
+public class GesundheitAnzeige extends JFrame {
+    private JPanel panel;
+    private GesundheitButton[] spielerButtons;
+    private JLabel[] spielerLabels;
+
+    public GesundheitAnzeige() {
+        setTitle("Gesundheitsanzeige");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 200);
+        setLayout(new GridLayout(3, 2));
+
+        spielerLabels = new JLabel[]{
+                new JLabel("Spieler 1 (Stufe 37)"),
+                new JLabel("Spieler 2 (Stufe 54)")
+        };
+
+        spielerButtons = new GesundheitButton[]{
+                new GesundheitButton(), new GesundheitButton(), new GesundheitButton(),
+                new GesundheitButton(), new GesundheitButton(), new GesundheitButton()
+        };
+
+        for (JLabel label : spielerLabels) {
+            add(label);
+        }
+
+        for (GesundheitButton button : spielerButtons) {
+            add(button);
+        }
+
+        setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        this.button1.setButtonGreen();
+    public static void main(String[] args) {
+        new GesundheitAnzeige();
     }
-    
 }
+

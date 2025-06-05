@@ -14,7 +14,7 @@ public class GesundheitAnzeigeMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GesundheitAnzeige fenster= new GesundheitAnzeige("Fenster");
+        GesundheitAnzeige fenster= new GesundheitAnzeige();
     }
     
 }
